@@ -1,0 +1,72 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date         : Wed Mar 28 10:40:30 2018
+| Host         : Harish running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file reaction_timer_top_control_sets_placed.rpt
+| Design       : reaction_timer_top
+| Device       : xc7a35t
+-----------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |     9 |
+| Unused register locations in slices containing registers |    46 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               9 |            5 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              71 |           19 |
+| Yes          | No                    | No                     |               8 |            3 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              66 |           19 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++-----------------------------------------------------------+------------------------------------------------+-------------------------------------------------------------------------+------------------+----------------+
+|                        Clock Signal                       |                  Enable Signal                 |                             Set/Reset Signal                            | Slice Load Count | Bel Load Count |
++-----------------------------------------------------------+------------------------------------------------+-------------------------------------------------------------------------+------------------+----------------+
+|  DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/shift_reg_reg[1]_0  |                                                | DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/shift_reg_reg[1]                   |                1 |              1 |
+|  clk_IBUF_BUFG                                            | REACTION_COUNTER/trigger_led1_out              |                                                                         |                1 |              1 |
+|  DISPLAY_RESPONSE_TIME/MULTI_SSD/CLOCK_1kHZ_GENERATOR/CLK |                                                |                                                                         |                1 |              2 |
+|  clk_IBUF_BUFG                                            |                                                |                                                                         |                4 |              7 |
+|  clk_IBUF_BUFG                                            | DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK_EDGE/E[0] |                                                                         |                2 |              7 |
+|  clk_IBUF_BUFG                                            | display_value                                  | reset_IBUF                                                              |               10 |             33 |
+|  clk_IBUF_BUFG                                            | run_timer                                      | reset_IBUF                                                              |                9 |             33 |
+|  clk_IBUF_BUFG                                            |                                                | DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/counter[0]_i_1__0_n_0              |                9 |             35 |
+|  clk_IBUF_BUFG                                            |                                                | DISPLAY_RESPONSE_TIME/MULTI_SSD/CLOCK_1kHZ_GENERATOR/counter[0]_i_1_n_0 |                9 |             35 |
++-----------------------------------------------------------+------------------------------------------------+-------------------------------------------------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 1      |                     2 |
+| 2      |                     1 |
+| 7      |                     2 |
+| 16+    |                     4 |
++--------+-----------------------+
+
+

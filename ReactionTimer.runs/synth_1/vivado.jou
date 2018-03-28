@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Wed Mar 28 10:38:59 2018
+# Process ID: 11400
+# Current directory: E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.runs/synth_1
+# Command line: vivado.exe -log reaction_timer_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source reaction_timer_top.tcl
+# Log file: E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.runs/synth_1/reaction_timer_top.vds
+# Journal file: E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source reaction_timer_top.tcl -notrace
