@@ -29,6 +29,7 @@ set_property target_language Verilog [current_project]
 set_property ip_output_repo {e:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
+  {E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/LFSR.v}
   {E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v}
   {E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter.v}
   {E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/debouncer.v}

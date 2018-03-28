@@ -26,10 +26,15 @@ module reaction_timer_top (
     parameter ON = 1;
     parameter OFF = 0;
 
-    reg run_timer;
-    wire [32:0] counter_time;
+    reg run_reaction_timer;
+    wire [32:0] reaction_timer_count;
+    reg [32:0] random_prep_time;
+    reg run_prep_timer;
+    wire [32:0] prep_timer_count;
+    wire [32:0] random_number;
     reg [1:0] next_state;
     reg [32:0] display_value;
+    wire clk_1kHz;
 
     debouncer DEBOUNCE_RESPONSE_BTN (
         .clk(clk),
@@ -38,18 +43,40 @@ module reaction_timer_top (
         );
     
     counter REACTION_COUNTER (
-        .run(run_timer),
-        .count(counter_time),
+        .run(run_reaction_timer),
+        .count(reaction_timer_count),
         .reset(reset),
         .clk(clk)
         );
 
+    clock_divider #(
+        .THRESHOLD(5_000_000)
+    ) CLOCK_1kHZ_GENERATOR (
+        .clk(clk),
+        .reset(1'b0),
+        .enable(1'b1),
+        .divided_clk(clk_1kHz)
+        );
+
+    counter PREPERATION_COUNTER (
+        .run(run_prep_timer),
+        .count(prep_timer_count),
+        .reset(reset),
+        .clk(clk_1kHz)
+        );
+
     display DISPLAY_RESPONSE_TIME (
-            .clk(clk),
-            .value(display_value),
-            .reset(reset),
-            .ssd_cathode(ssd_cathode),
-            .ssd_anode(ssd_anode)
+        .clk(clk),
+        .value(display_value),
+        .reset(reset),
+        .ssd_cathode(ssd_cathode),
+        .ssd_anode(ssd_anode)
+        );
+
+    lfsr RAND_NUM_GEN (
+        .random_number(random_number),
+        .reset(reset),
+        .clk(clk)
         );
 
     // divide the reaction time by 10^9, 10^8, 10^8 to extract the digits for seconds and micro seconds
@@ -58,29 +85,34 @@ module reaction_timer_top (
 
     always @(posedge clk) begin
         if (reset) begin
-            display_value <= 33'd0;
             next_state <= TRIGGER;
-            run_timer <= OFF;
+            run_reaction_timer <= OFF;
+            trigger_led <= OFF;
+            run_prep_timer <= ON;
         end else if (enable) begin
             case (next_state)
                 TRIGGER: begin
-                    trigger_led <= ON;
-                    next_state <= COUNT;
+                    random_prep_time <= random_number;
+                    if(prep_timer_count == random_prep_time) begin
+                        run_prep_timer <= OFF;
+                        trigger_led <= ON;
+                        next_state <= COUNT;
+                    end
                 end
                 COUNT: begin 
-                    run_timer <= ON; 
+                    run_reaction_timer <= ON; 
                     next_state <= WAIT_FOR_RESPONSE;
                 end
                 WAIT_FOR_RESPONSE: begin
-                    display_value <= counter_time;
-                    if (db_response_btn == ON || counter_time >= 33'd10_000_000_000) begin
-                        run_timer <= OFF;
+                    display_value <= reaction_timer_count;
+                    if (db_response_btn == ON | reaction_timer_count >= 33'd999_900_000) begin
+                        run_reaction_timer <= OFF;
                         next_state <= SHOW_TIME;
                         trigger_led <= OFF;
                     end
                 end
                 SHOW_TIME:
-                    display_value <= counter_time;   
+                    display_value <= reaction_timer_count;   
                 default:
                     next_state <= TRIGGER;
             endcase

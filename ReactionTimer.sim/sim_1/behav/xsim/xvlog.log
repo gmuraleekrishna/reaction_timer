@@ -1,3 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/lfsr.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module lfsr
 INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module clock_divider
 INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter.v" into library xil_defaultlib
@@ -12,9 +14,25 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Sy
 INFO: [VRFC 10-311] analyzing module multiple_seven_segment_display
 INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module reaction_timer_top
-WARNING: [VRFC 10-1315] redeclaration of ansi port next_state is not allowed [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:36]
-INFO: [VRFC 10-2458] undeclared symbol db_response_btn, assumed default net type wire [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:42]
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module seven_segment_decoder
-INFO: [VRFC 10-2263] Analyzing Verilog file "E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sim_1/new/TEST_reaction_timer_top.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module TEST_reaction_timer_top
+INFO: [VRFC 10-2458] undeclared symbol db_response_btn, assumed default net type wire [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:40]
+INFO: [VRFC 10-2458] undeclared symbol run_prep_timer, assumed default net type wire [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:51]
+ERROR: [VRFC 10-1412] syntax error near always [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:75]
+ERROR: [VRFC 10-1412] syntax error near <= [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:85]
+ERROR: [VRFC 10-1412] syntax error near <= [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:90]
+ERROR: [VRFC 10-1412] syntax error near <= [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:94]
+ERROR: [VRFC 10-1412] syntax error near <= [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:96]
+ERROR: [VRFC 10-1412] syntax error near <= [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:102]
+ERROR: [VRFC 10-1412] syntax error near <= [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:104]
+ERROR: [VRFC 10-1412] syntax error near end [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:107]
+ERROR: [VRFC 10-51] next_state is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:78]
+ERROR: [VRFC 10-51] run_timer is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:79]
+ERROR: [VRFC 10-51] random_prep_time is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:80]
+ERROR: [VRFC 10-60] enable is not a constant [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:81]
+ERROR: [VRFC 10-60] next_state is not a constant [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:82]
+ERROR: [VRFC 10-60] prep_timer_count is not a constant [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:84]
+ERROR: [VRFC 10-51] trigger_led is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:85]
+ERROR: [VRFC 10-51] next_state is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:86]
+ERROR: [VRFC 10-51] run_timer is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:90]
+ERROR: [VRFC 10-51] next_state is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:91]
+ERROR: [VRFC 10-51] display_value is an unknown type [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:94]
+INFO: [#UNDEF] Sorry, too many errors..
