@@ -25,7 +25,7 @@ module TEST_lfsr(
     );
 
 reg clk, reset;
-wire [32:0] random number;
+wire [32:0] random_number;
 
 lfsr UUT(
 	.clk(clk),

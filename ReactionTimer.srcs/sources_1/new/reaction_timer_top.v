@@ -17,11 +17,11 @@ module reaction_timer_top (
     // 5 stop timer
     // 6 get time 
     // 7 display time
-
-    parameter TRIGGER = 2'd0;
-    parameter COUNT = 2'd1;
-    parameter WAIT_FOR_RESPONSE = 2'd2;
-    parameter SHOW_TIME = 2'd3;
+    parameter PREPARATION = 3'd0; 
+    parameter TRIGGER = 3'd1;
+    parameter COUNT = 3'd2;
+    parameter WAIT_FOR_RESPONSE = 3'd3;
+    parameter SHOW_TIME = 3'd4;
 
     parameter ON = 1;
     parameter OFF = 0;
@@ -30,10 +30,11 @@ module reaction_timer_top (
     wire [32:0] reaction_timer_count;
     reg [32:0] random_prep_time;
     reg run_prep_timer;
-    wire [32:0] prep_timer_count;
+    wire [1:0] prep_timer_count;
     wire [32:0] random_number;
     reg [1:0] next_state;
     reg [32:0] display_value;
+    wire db_response_btn;
     wire clk_1kHz;
 
     debouncer DEBOUNCE_RESPONSE_BTN (
@@ -46,9 +47,11 @@ module reaction_timer_top (
         .run(run_reaction_timer),
         .count(reaction_timer_count),
         .reset(reset),
+        .enable(enable),
         .clk(clk)
         );
-
+    
+    
     clock_divider #(
         .THRESHOLD(5_000_000)
     ) CLOCK_1kHZ_GENERATOR (
@@ -58,16 +61,18 @@ module reaction_timer_top (
         .divided_clk(clk_1kHz)
         );
 
-    counter PREPERATION_COUNTER (
+    counter_rev PREPERATION_COUNTER (
         .run(run_prep_timer),
         .count(prep_timer_count),
         .reset(reset),
+        .enable(enable),
         .clk(clk_1kHz)
         );
 
     display DISPLAY_RESPONSE_TIME (
         .clk(clk),
         .value(display_value),
+        .prep_timer_count_value(prep_timer_count),
         .reset(reset),
         .ssd_cathode(ssd_cathode),
         .ssd_anode(ssd_anode)
@@ -85,13 +90,21 @@ module reaction_timer_top (
 
     always @(posedge clk) begin
         if (reset) begin
-            next_state <= TRIGGER;
+            next_state <= PREPARATION;
+            
             run_reaction_timer <= OFF;
             trigger_led <= OFF;
             run_prep_timer <= ON;
         end else if (enable) begin
             case (next_state)
-                TRIGGER: begin
+               PREPARATION: begin
+                    if (enable) begin
+                        trigger_led <= OFF;
+                        run_prep_timer <= ON;
+                        next_state  <=   TRIGGER;                 
+                    end               
+               end 
+               TRIGGER: begin
                     random_prep_time <= random_number;
                     if(prep_timer_count == random_prep_time) begin
                         run_prep_timer <= OFF;
