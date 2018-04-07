@@ -3,6 +3,7 @@ create_clock -period 10.00 [get_ports clk]
 set_property -dict {PACKAGE_PIN T18 IOSTANDARD LVCMOS33} [get_ports reset]
 set_property -dict {PACKAGE_PIN T1 IOSTANDARD LVCMOS33} [get_ports enable]
 set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports response_btn]
+set_property -dict {PACKAGE_PIN T17 IOSTANDARD LVCMOS33} [get_ports start_btn]
 set_property -dict {PACKAGE_PIN L1 IOSTANDARD LVCMOS33} [get_ports trigger_led]
 
 set_property -dict {PACKAGE_PIN W4 IOSTANDARD LVCMOS33} [get_ports {ssd_anode[3]}]

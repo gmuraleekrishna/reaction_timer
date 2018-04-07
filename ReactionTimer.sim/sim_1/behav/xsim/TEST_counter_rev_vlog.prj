@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../ReactionTimer.srcs/sources_1/new/counter_rev.v" \
+"../../../../ReactionTimer.srcs/sim_1/new/TEST_counter_rev.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

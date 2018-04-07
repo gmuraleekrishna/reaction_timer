@@ -11,7 +11,7 @@ module counter_rev(
     );
 
     always @(posedge clk) begin
-        if (reset || ~enable) begin
+        if (reset) begin
             count <= 2'd3;
         end else if(run && enable) begin
             count <= count - 1;

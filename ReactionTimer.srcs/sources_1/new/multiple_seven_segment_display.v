@@ -5,8 +5,7 @@ module multiple_seven_segment_display(
     input wire [3:0] digit1, 
     input wire [3:0] digit2, 
     input wire [3:0] digit3, 
-    input wire [3:0] digit4,
-    input wire [1:0] count_down,
+    input wire [3:0] digit4,   
     output wire [7:0] ssd_cathode,
     output wire [3:0] ssd_anode
     );
@@ -31,8 +30,7 @@ module multiple_seven_segment_display(
       .digit1(digit1), 
       .digit2(digit2), 
       .digit3(digit3),
-      .digit4(digit4),
-      .count_down(count_down)
+      .digit4(digit4)      
       );
       
     always @(posedge clk_1kHz) begin

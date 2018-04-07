@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sat Apr  7 15:36:45 2018
+# Process ID: 15924
+# Current directory: E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.sim/sim_1/behav/xsim/xsim.dir/TEST_counter_rev_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source E:/MEngg -notrace
