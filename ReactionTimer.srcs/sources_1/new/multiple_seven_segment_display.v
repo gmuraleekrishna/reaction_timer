@@ -22,14 +22,11 @@ module multiple_seven_segment_display(
       .digit2(digit2), 
       .digit3(digit3),
       .digit4(digit4),
-      .decimal(decimal)
+      .decimal(decimal),
+      .clear(clear)
       );
       
     always @(posedge clk) begin
-        if(clear) begin
-            active_display <= 3'd5;
-        end else begin
-            active_display <= active_display + 1;
-        end
+        active_display <= active_display + 1;
     end     
 endmodule

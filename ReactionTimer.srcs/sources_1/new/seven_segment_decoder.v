@@ -1,13 +1,14 @@
 `timescale 1ns / 1ps
 module seven_segment_decoder(
-    input [2:0] active_display,
+    input [1:0] active_display,
     input wire [4:0] digit1, 
     input wire [4:0] digit2, 
     input wire [4:0] digit3, 
     input wire [4:0] digit4,
     input wire decimal,
+    input clear,
     output reg [3:0] ssd_anode,
-    output reg [7:0] ssd
+    output reg [7:0] ssd,
     );
 
     parameter ON = 1;
@@ -48,33 +49,37 @@ module seven_segment_decoder(
         ssd[7] = ~dp;
     end
     always @(*) begin
-        case(active_display)
-            3'd0 : begin
-                ssd_number <= digit4;
-                ssd_anode <= 4'b1110;
-                dp <= OFF;
-            end
-            3'd1 : begin
-                ssd_number <= digit3;
-                ssd_anode <= 4'b1101;
-                dp <= OFF;
-            end
-            3'd2 : begin
-                ssd_number <= digit2;
-                ssd_anode <= 4'b1011;
-                dp <= OFF;
-            end
-            3'd3 : begin
-                ssd_number <= digit1;
-                ssd_anode <= 4'b0111;
-                dp <= decimal;
-            end
+        if(clear) begin
+            ssd_anode <= 4'b1111; // none active
+        end else begin
+            case(active_display)
+                2'd0 : begin
+                    ssd_number <= digit4;
+                    ssd_anode <= 4'b1110;
+                    dp <= OFF;
+                end
+                2'd1 : begin
+                    ssd_number <= digit3;
+                    ssd_anode <= 4'b1101;
+                    dp <= OFF;
+                end
+                2'd2 : begin
+                    ssd_number <= digit2;
+                    ssd_anode <= 4'b1011;
+                    dp <= OFF;
+                end
+                2'd3 : begin
+                    ssd_number <= digit1;
+                    ssd_anode <= 4'b0111;
+                    dp <= decimal;
+                end
 
-            default : begin
-                ssd_number <= 4'd15; // undefined
-                ssd_anode <= 4'b1111; // none active
-                dp <= OFF;
-            end
-        endcase
+                default : begin
+                    ssd_number <= 4'd15; // undefined
+                    ssd_anode <= 4'b1111; // none active
+                    dp <= OFF;
+                end
+            endcase
+        end
     end
 endmodule
