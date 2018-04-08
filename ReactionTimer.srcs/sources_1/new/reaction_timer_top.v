@@ -11,13 +11,6 @@ module reaction_timer_top (
     output wire [3:0] ssd_anode
     );
     
-    // 1 glow led
-    // 2 start timer
-    // 3 timer count up
-    // 4  if not trigger-ed go to 3
-    // 5 stop timer
-    // 6 get time 
-    // 7 display time
     parameter IDLE = 3'd0;
     parameter PREPARATION = 3'd1; 
     parameter TRIGGER = 3'd2;
@@ -31,6 +24,10 @@ module reaction_timer_top (
     parameter ON = 1;
     parameter OFF = 0;
 
+    parameter FLOAT = 2'd0;
+    parameter DIGIT = 2'd1;
+    parameter STRING = 2'd2;
+
     reg run_reaction_timer;
     reg reset_counters;
     reg enable_counters;
@@ -40,14 +37,16 @@ module reaction_timer_top (
     reg run_prep_timer;
     wire [13:0] preparation_count;
     wire [13:0] random_number;
-    reg [1:0] next_state;
+    reg [2:0] next_state;
     reg [13:0] display_value;
     wire db_response_btn;
     wire clk_1kHz;
     wire clk_1Hz;
     wire [13:0] trigger_timer_count;
     reg run_trigger_timer;
-    reg is_float;
+    reg [1:0] display_data_type;
+
+    reg best_reaction_time;
 
     debouncer DEBOUNCE_RESPONSE_BTN (
         .clk(clk),
@@ -105,9 +104,9 @@ module reaction_timer_top (
         ); 
 
     display DISPLAY_RESPONSE_TIME (
-        .clk(clk),
+        .clk(clk_1kHz),
         .value(display_value),
-        .is_float(is_float),       
+        .type(display_data_type),       
         .ssd_cathode(ssd_cathode),
         .ssd_anode(ssd_anode)
         );
@@ -132,14 +131,14 @@ module reaction_timer_top (
                     trigger_led <= OFF;
                     run_trigger_timer <= OFF;
                     reset_counters <= ON;
-                    enable_counters <= OFF;          
+                    enable_counters <= OFF;       
                 end
                 PREPARATION: begin
                     reset_counters <= OFF;
                     enable_counters <= ON;
                     trigger_led <= OFF;               
                     run_prep_timer <= ON;
-                    is_float <= OFF;
+                    display_data_type <= DIGIT;
                     display_value <= preparation_count;
                     if (preparation_count == 0) begin
                         next_state  <= TRIGGER;
@@ -148,13 +147,13 @@ module reaction_timer_top (
                     end 
                 end 
                 TRIGGER: begin
+                    display_data_type <= STRING;
+                    display_value <= 14'd0; // GO
                     run_trigger_timer <= ON;
                     if(db_response_btn == ON) begin
                         run_trigger_timer <= OFF;
                         next_state <= FAILED;
-                    end
-                    
-                    if(trigger_timer_count == random_trigger_time | trigger_timer_count >= FIVE_SECONDS ) begin
+                    end else if(trigger_timer_count == random_trigger_time | trigger_timer_count >= FIVE_SECONDS) begin
                         run_trigger_timer <= OFF;
                         trigger_led <= ON;
                         next_state <= WAIT_FOR_RESPONSE;
@@ -162,20 +161,25 @@ module reaction_timer_top (
                 end
                 WAIT_FOR_RESPONSE: begin
                     run_reaction_timer <= ON; 
+                    display_data_type <= FLOAT;
                     display_value <= reaction_timer_count;
-                    is_float <= ON;
-                    if (db_response_btn == ON | reaction_timer_count >= NINE_POINT_999_SECONDS) begin
+                    if (db_response_btn == ON) begin
                         run_reaction_timer <= OFF;
                         next_state <= SHOW_TIME;
                         trigger_led <= OFF;
+                    end else if (reaction_timer_count >= NINE_POINT_999_SECONDS) begin
+                        run_reaction_timer <= OFF;
+                        trigger_led <= OFF;
+                        next_state <= FAILED;
                     end
                 end
                 SHOW_TIME: begin
+                    display_data_type <= FLOAT;
                     display_value <= reaction_timer_count; 
-                    is_float <= ON;
                 end 
                 FAILED: begin
-                    next_state <= IDLE; //TBD: display "FAIL" in the SSD
+                    display_value <= 14'd1; // FAIL
+                    display_data_type <= STRING;
                 end
                 default:
                     next_state <= IDLE;
