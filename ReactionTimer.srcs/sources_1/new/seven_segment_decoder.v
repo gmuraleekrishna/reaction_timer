@@ -49,22 +49,22 @@ module seven_segment_decoder(
     end
     always @(*) begin
         case(active_display)
-            2'd1 : begin
+            3'd0 : begin
                 ssd_number <= digit4;
                 ssd_anode <= 4'b1110;
                 dp <= OFF;
             end
-            2'd2 : begin
+            3'd1 : begin
                 ssd_number <= digit3;
                 ssd_anode <= 4'b1101;
                 dp <= OFF;
             end
-            2'd3 : begin
+            3'd2 : begin
                 ssd_number <= digit2;
                 ssd_anode <= 4'b1011;
                 dp <= OFF;
             end
-            2'd4 : begin
+            3'd3 : begin
                 ssd_number <= digit1;
                 ssd_anode <= 4'b0111;
                 dp <= decimal;

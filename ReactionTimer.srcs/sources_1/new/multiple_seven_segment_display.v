@@ -2,6 +2,7 @@
 
 module multiple_seven_segment_display(
     input clk,
+    input clear,
     input wire [4:0] digit1, 
     input wire [4:0] digit2, 
     input wire [4:0] digit3, 
@@ -25,7 +26,10 @@ module multiple_seven_segment_display(
       );
       
     always @(posedge clk) begin
-        active_display <= active_display + 1;
-    end
-     
+        if(clear) begin
+            active_display <= 2'd5;
+        end else begin
+            active_display <= active_display + 1;
+        end
+    end     
 endmodule

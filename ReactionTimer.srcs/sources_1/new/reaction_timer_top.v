@@ -49,6 +49,7 @@ module reaction_timer_top (
     reg [1:0] display_data_type;
 
     reg best_reaction_time;
+    reg clear_display;
 
     debouncer DEBOUNCE_RESPONSE_BTN (
         .clk(clk),
@@ -115,7 +116,8 @@ module reaction_timer_top (
         .value(display_value),
         .type(display_data_type),       
         .ssd_cathode(ssd_cathode),
-        .ssd_anode(ssd_anode)
+        .ssd_anode(ssd_anode),
+        .clear(clear_display)
         );
 
     lfsr RAND_NUM_GEN (
@@ -130,6 +132,7 @@ module reaction_timer_top (
         end else if (enable) begin
             case (next_state)
                 IDLE: begin
+                    clear_display <= ON;
                     run_prep_timer <= OFF;
                     run_reaction_timer <= OFF;
                     trigger_led <= OFF;
@@ -141,6 +144,7 @@ module reaction_timer_top (
                     end     
                 end
                 PREPARATION: begin
+                    clear_display <= OFF;
                     reset_counters <= OFF;
                     enable_counters <= ON;
                     trigger_led <= OFF;               
@@ -154,8 +158,7 @@ module reaction_timer_top (
                     end 
                 end 
                 TRIGGER: begin
-                    display_data_type <= STRING;
-                    display_value <= 14'd0; // GO
+                    clear_display <= ON;
                     run_trigger_timer <= ON;
                     if(db_response_btn == ON) begin
                         run_trigger_timer <= OFF;
@@ -168,8 +171,6 @@ module reaction_timer_top (
                 end
                 WAIT_FOR_RESPONSE: begin
                     run_reaction_timer <= ON; 
-                    display_data_type <= FLOAT;
-                    display_value <= reaction_timer_count;
                     if (db_response_btn == ON) begin
                         run_reaction_timer <= OFF;
                         next_state <= SHOW_TIME;
@@ -181,11 +182,13 @@ module reaction_timer_top (
                     end
                 end
                 SHOW_TIME: begin
+                    clear_display <= OFF;
                     display_data_type <= FLOAT;
                     display_value <= reaction_timer_count;
                     next_state <= IDLE;
                 end 
                 FAILED: begin
+                    clear_display <= OFF;
                     display_value <= 14'd1; // FAIL
                     display_data_type <= STRING;
                     next_state <= IDLE;

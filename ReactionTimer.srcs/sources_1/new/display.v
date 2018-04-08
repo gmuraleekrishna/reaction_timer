@@ -3,6 +3,7 @@
 module display (
     input wire [13:0] value, 
     input clk,
+    input clear,
     input wire [1:0] type,
     output wire [7:0] ssd_cathode,
     output wire [3:0] ssd_anode
@@ -30,7 +31,8 @@ module display (
         .digit4(digit4),
         .decimal(float),        
         .ssd_cathode(ssd_cathode),
-        .ssd_anode(ssd_anode)
+        .ssd_anode(ssd_anode),
+        .clear(clear)
         );
 
     parameter TEN_TO_POWER_3 = 14'd1_000;
@@ -57,12 +59,6 @@ module display (
         end else if (type == STRING) begin
             float <= 1'b0;
             case(value)
-                  14'd0: begin
-                    digit1 <= 5'd19; 
-                    digit2 <= 5'd19; 
-                    digit3 <= 5'd14; // G
-                    digit4 <= 5'd0; // O
-                end
                 14'd1: begin
                     digit1 <= 5'd10; // F
                     digit2 <= 5'd11; // A
