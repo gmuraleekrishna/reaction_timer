@@ -3,7 +3,8 @@
 module reaction_timer_top (
     input enable,
     input response_btn,
-    input start_btn,
+    input ready_btn,
+    input restart_btn,
     input reset,
     input clk,
     output reg trigger_led,
@@ -40,6 +41,7 @@ module reaction_timer_top (
     reg [2:0] next_state;
     reg [13:0] display_value;
     wire db_response_btn;
+    wire db_restart_btn;
     wire clk_1kHz;
     wire clk_1Hz;
     wire [13:0] trigger_timer_count;
@@ -54,10 +56,16 @@ module reaction_timer_top (
         .button_out(db_response_btn)
         );
 
-    debouncer DEBOUNCE_START_BTN (
+    debouncer DEBOUNCE_READY_BTN (
         .clk(clk),
-        .button_in(start_btn),
-        .button_out(db_start_btn)
+        .button_in(ready_btn),
+        .button_out(db_ready_btn)
+        );
+
+    debouncer DEBOUNCE_RESTRT_BTN (
+        .clk(clk),
+        .button_in(restart_btn),
+        .button_out(db_restart_btn)
         );
     
     clock_divider #(
@@ -76,7 +84,6 @@ module reaction_timer_top (
         .enable(enable_counters),
         .clk(clk_1kHz)
         );
-    
 
     clock_divider #(
         .THRESHOLD(50_000_000)
@@ -95,7 +102,7 @@ module reaction_timer_top (
         .clk(clk_1kHz)
         );
 
-    counter_rev PREPARATION_COUNT_DOWN (
+    reverse_counter PREPARATION_COUNTER (
         .clk(clk_1Hz),
         .enable(enable_counters),
         .run(run_prep_timer),
@@ -103,7 +110,7 @@ module reaction_timer_top (
         .count(preparation_count)
         ); 
 
-    display DISPLAY_RESPONSE_TIME (
+    display DISPLAY (
         .clk(clk_1kHz),
         .value(display_value),
         .type(display_data_type),       
@@ -113,25 +120,25 @@ module reaction_timer_top (
 
     lfsr RAND_NUM_GEN (
         .random_number(random_number),
-        .reset(reset),
+        .reset(reset)
         .clk(clk)
         );
 
     always @(posedge clk) begin
-        if (reset) begin
+        if (reset | db_restart_btn) begin
             next_state <= IDLE;
         end else if (enable) begin
             case (next_state)
                 IDLE: begin
-                    if (db_start_btn == ON) begin
-                        next_state <= PREPARATION;
-                    end
                     run_prep_timer <= OFF;
                     run_reaction_timer <= OFF;
                     trigger_led <= OFF;
                     run_trigger_timer <= OFF;
                     reset_counters <= ON;
-                    enable_counters <= OFF;       
+                    enable_counters <= OFF;
+                    if (db_ready_btn == ON) begin
+                        next_state <= PREPARATION;
+                    end     
                 end
                 PREPARATION: begin
                     reset_counters <= OFF;
@@ -175,11 +182,13 @@ module reaction_timer_top (
                 end
                 SHOW_TIME: begin
                     display_data_type <= FLOAT;
-                    display_value <= reaction_timer_count; 
+                    display_value <= reaction_timer_count;
+                    next_state <= IDLE;
                 end 
                 FAILED: begin
                     display_value <= 14'd1; // FAIL
                     display_data_type <= STRING;
+                    next_state <= IDLE;
                 end
                 default:
                     next_state <= IDLE;

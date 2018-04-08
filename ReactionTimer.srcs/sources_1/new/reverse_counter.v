@@ -2,7 +2,7 @@
 
 
 
-module counter_rev(
+module reverse_counter (
     input run,
     input reset,
     input enable,
