@@ -27,7 +27,7 @@ module multiple_seven_segment_display(
       
     always @(posedge clk) begin
         if(clear) begin
-            active_display <= 2'd5;
+            active_display <= 3'd5;
         end else begin
             active_display <= active_display + 1;
         end
