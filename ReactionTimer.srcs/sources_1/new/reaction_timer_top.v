@@ -122,7 +122,7 @@ module reaction_timer_top (
 
     lfsr RAND_NUM_GEN (
         .random_number(random_number),
-        .reset(reset)
+        .reset(reset),
         .clk(clk)
         );
 
