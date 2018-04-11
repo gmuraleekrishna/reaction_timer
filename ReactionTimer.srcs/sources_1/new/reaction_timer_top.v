@@ -41,6 +41,7 @@ module reaction_timer_top (
     reg [2:0] next_state;
     reg [13:0] display_value;
     wire db_response_btn;
+    wire db_ready_btn;
     wire db_restart_btn;
     wire clk_1kHz;
     wire clk_1Hz;
