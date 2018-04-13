@@ -65,6 +65,12 @@ module display (
                     digit3 <= 5'd12; // I
                     digit4 <= 5'd13; // L
                 end
+                14'd2: begin
+                    digit1 <= 5'd15; //B
+                    digit2 <= 5'd16; //E   
+                    digit3 <= 5'd17; //S
+                    digit4 <= 5'd18; //t
+                end    
                 default: begin
                     digit1 <= 5'd19; 
                     digit2 <= 5'd19; 

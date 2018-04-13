@@ -14,10 +14,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 8432 
-WARNING: [Synth 8-2292] literal value truncated to fit in 2 bits [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v:67]
+INFO: Helper process launched with PID 21200 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 402.117 ; gain = 111.078
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 391.348 ; gain = 101.063
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'reaction_timer_top' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:3]
 	Parameter IDLE bound to: 3'b000 
@@ -27,7 +26,9 @@ INFO: [Synth 8-638] synthesizing module 'reaction_timer_top' [E:/MEngg Materials
 	Parameter SHOW_TIME bound to: 3'b100 
 	Parameter FAILED bound to: 3'b101 
 	Parameter FIVE_SECONDS bound to: 14'b01001110001000 
+	Parameter SEVEN_SECONDS bound to: 14'b01101101011000 
 	Parameter NINE_POINT_999_SECONDS bound to: 14'b10011100001111 
+	Parameter TEN_SECONDS bound to: 14'b10011100010000 
 	Parameter ON bound to: 1 - type: integer 
 	Parameter OFF bound to: 0 - type: integer 
 	Parameter FLOAT bound to: 2'b00 
@@ -49,9 +50,14 @@ INFO: [Synth 8-256] done synthesizing module 'counter' (4#1) [E:/MEngg Materials
 INFO: [Synth 8-638] synthesizing module 'clock_divider__parameterized1' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:3]
 	Parameter THRESHOLD bound to: 50000000 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'clock_divider__parameterized1' (4#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:3]
-INFO: [Synth 8-638] synthesizing module 'counter_rev' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter_rev.v:5]
-INFO: [Synth 8-256] done synthesizing module 'counter_rev' (5#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter_rev.v:5]
-WARNING: [Synth 8-689] width (14) of port connection 'count' does not match port width (2) of module 'counter_rev' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:103]
+INFO: [Synth 8-638] synthesizing module 'reverse_counter' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:5]
+	Parameter INITIAL_VALUE bound to: 10 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'reverse_counter' (5#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:5]
+WARNING: [Synth 8-689] width (14) of port connection 'count' does not match port width (4) of module 'reverse_counter' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:116]
+INFO: [Synth 8-638] synthesizing module 'reverse_counter__parameterized0' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:5]
+	Parameter INITIAL_VALUE bound to: 3 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'reverse_counter__parameterized0' (5#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:5]
+WARNING: [Synth 8-689] width (14) of port connection 'count' does not match port width (4) of module 'reverse_counter__parameterized0' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:130]
 INFO: [Synth 8-638] synthesizing module 'display' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:3]
 	Parameter FLOAT bound to: 2'b00 
 	Parameter DIGIT bound to: 2'b01 
@@ -64,8 +70,8 @@ INFO: [Synth 8-638] synthesizing module 'multiple_seven_segment_display' [E:/MEn
 INFO: [Synth 8-638] synthesizing module 'seven_segment_decoder' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v:2]
 	Parameter ON bound to: 1 - type: integer 
 	Parameter OFF bound to: 0 - type: integer 
+INFO: [Synth 8-226] default block is never used [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v:55]
 INFO: [Synth 8-256] done synthesizing module 'seven_segment_decoder' (6#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v:2]
-WARNING: [Synth 8-689] width (2) of port connection 'active_display' does not match port width (3) of module 'seven_segment_decoder' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/multiple_seven_segment_display.v:17]
 INFO: [Synth 8-256] done synthesizing module 'multiple_seven_segment_display' (7#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/multiple_seven_segment_display.v:3]
 INFO: [Synth 8-256] done synthesizing module 'display' (8#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:3]
 INFO: [Synth 8-638] synthesizing module 'lfsr' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/lfsr.v:2]
@@ -73,7 +79,7 @@ WARNING: [Synth 8-6014] Unused sequential element bit_reg was removed.  [E:/MEng
 INFO: [Synth 8-256] done synthesizing module 'lfsr' (9#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/lfsr.v:2]
 INFO: [Synth 8-256] done synthesizing module 'reaction_timer_top' (10#1) [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reaction_timer_top.v:3]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 434.414 ; gain = 143.375
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 442.484 ; gain = 152.199
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -83,7 +89,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 434.414 ; gain = 143.375
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 442.484 ; gain = 152.199
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -99,22 +105,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 776.598 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 779.824 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 776.598 ; gain = 485.559
+Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 779.824 ; gain = 489.539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 776.598 ; gain = 485.559
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 779.824 ; gain = 489.539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 776.598 ; gain = 485.559
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 779.824 ; gain = 489.539
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
 INFO: [Synth 8-5544] ROM "rising_edge" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
@@ -124,40 +130,46 @@ INFO: [Synth 8-5544] ROM "falling_edge" won't be mapped to Block RAM because add
 WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
 WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter.v:13]
 WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:17]
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:17]
 INFO: [Synth 8-5546] ROM "digit1" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "digit1" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "digit2" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "digit3" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "digit4" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-802] inferred FSM for state register 'next_state_reg' in module 'reaction_timer_top'
-INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "run_prep_timer" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "run_prep_timer" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "clear_display" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "run_prep_timer" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "run_reaction_timer" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "run_delay_timer" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "run_trigger_timer" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "display_data_type" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "debug_delay_timer_count" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 WARNING: [Synth 8-327] inferring latch for variable 'rising_edge_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/edge_detector.v:23]
 WARNING: [Synth 8-327] inferring latch for variable 'falling_edge_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/edge_detector.v:25]
-WARNING: [Synth 8-327] inferring latch for variable 'digit1_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:27]
-WARNING: [Synth 8-327] inferring latch for variable 'digit2_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:28]
-WARNING: [Synth 8-327] inferring latch for variable 'digit3_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:29]
-WARNING: [Synth 8-327] inferring latch for variable 'digit4_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:30]
-WARNING: [Synth 8-327] inferring latch for variable 'float_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:31]
+WARNING: [Synth 8-327] inferring latch for variable 'dp_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v:59]
+WARNING: [Synth 8-327] inferring latch for variable 'ssd_number_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/seven_segment_decoder.v:57]
+WARNING: [Synth 8-327] inferring latch for variable 'digit1_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:28]
+WARNING: [Synth 8-327] inferring latch for variable 'digit2_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:29]
+WARNING: [Synth 8-327] inferring latch for variable 'digit3_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:30]
+WARNING: [Synth 8-327] inferring latch for variable 'digit4_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:31]
+WARNING: [Synth 8-327] inferring latch for variable 'float_reg' [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/display.v:32]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                    IDLE |                           000001 |                              000
-             PREPARATION |                           000010 |                              001
-                 TRIGGER |                           000100 |                              010
-       WAIT_FOR_RESPONSE |                           001000 |                              011
-               SHOW_TIME |                           010000 |                              100
-                  FAILED |                           100000 |                              101
+                    IDLE |                              000 |                              000
+             PREPARATION |                              001 |                              001
+                 TRIGGER |                              010 |                              010
+       WAIT_FOR_RESPONSE |                              011 |                              011
+               SHOW_TIME |                              100 |                              100
+                  FAILED |                              101 |                              101
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'next_state_reg' using encoding 'one-hot' in module 'reaction_timer_top'
+INFO: [Synth 8-3354] encoded FSM with state register 'next_state_reg' using encoding 'sequential' in module 'reaction_timer_top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 776.598 ; gain = 485.559
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 779.824 ; gain = 489.539
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -170,27 +182,29 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input      2 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 1     
 +---XORs : 
 	   4 Input     14 Bit         XORs := 1     
 +---Registers : 
-	               14 Bit    Registers := 3     
-	                8 Bit    Registers := 2     
-	                2 Bit    Registers := 3     
-	                1 Bit    Registers := 12    
+	               14 Bit    Registers := 4     
+	                8 Bit    Registers := 3     
+	                4 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 16    
 +---Muxes : 
-	   6 Input     14 Bit        Muxes := 1     
-	   8 Input      6 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 5     
+	   6 Input     14 Bit        Muxes := 2     
 	   4 Input      5 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 1     
 	   5 Input      5 Bit        Muxes := 3     
 	   6 Input      5 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 1     
-	   4 Input      4 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
 	   6 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 24    
+	   2 Input      1 Bit        Muxes := 34    
 	   4 Input      1 Bit        Muxes := 2     
-	   6 Input      1 Bit        Muxes := 11    
+	   6 Input      1 Bit        Muxes := 19    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -201,15 +215,18 @@ Hierarchical RTL Component report
 Module reaction_timer_top 
 Detailed RTL Component Info : 
 +---Registers : 
-	               14 Bit    Registers := 2     
+	               14 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 6     
+	                1 Bit    Registers := 8     
 +---Muxes : 
-	   6 Input     14 Bit        Muxes := 1     
-	   8 Input      6 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 5     
+	   6 Input     14 Bit        Muxes := 2     
+	   8 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
 	   6 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 5     
-	   6 Input      1 Bit        Muxes := 11    
+	   2 Input      1 Bit        Muxes := 12    
+	   6 Input      1 Bit        Muxes := 19    
 Module clock_divider 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -232,20 +249,23 @@ Module clock_divider__parameterized1
 Detailed RTL Component Info : 
 +---Registers : 
 	                1 Bit    Registers := 1     
-Module counter_rev 
+Module reverse_counter 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input      2 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
-	                2 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+Module reverse_counter__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
 Module seven_segment_decoder 
 Detailed RTL Component Info : 
 +---Muxes : 
 	   4 Input      5 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 1     
-	   4 Input      4 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 1     
 Module multiple_seven_segment_display 
 Detailed RTL Component Info : 
@@ -281,32 +301,75 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "run_prep_timer" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "run_prep_timer" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 WARNING: [Synth 8-6014] Unused sequential element CLOCK_1kHZ_GENERATOR/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
 WARNING: [Synth 8-6014] Unused sequential element CLOCK_1HZ_GENERATOR/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
+WARNING: [Synth 8-6014] Unused sequential element DEBOUNCE_RESTRT_BTN/shift_reg_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/debouncer.v:32]
 WARNING: [Synth 8-6014] Unused sequential element DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
-WARNING: [Synth 8-6014] Unused sequential element DEBOUNCE_START_BTN/DEBOUNCE_CLOCK/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
+WARNING: [Synth 8-6014] Unused sequential element DEBOUNCE_READY_BTN/DEBOUNCE_CLOCK/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
+WARNING: [Synth 8-6014] Unused sequential element DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
 WARNING: [Synth 8-6014] Unused sequential element REACTION_COUNTER/count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter.v:13]
 WARNING: [Synth 8-6014] Unused sequential element TRIGGER_COUNTER/count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/counter.v:13]
+WARNING: [Synth 8-6014] Unused sequential element DELAY_COUNTER/count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:17]
+WARNING: [Synth 8-6014] Unused sequential element PREPARATION_COUNTER/count_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/reverse_counter.v:17]
 WARNING: [Synth 8-6014] Unused sequential element CLOCK_1kHZ_GENERATOR/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
 WARNING: [Synth 8-6014] Unused sequential element CLOCK_1HZ_GENERATOR/counter_reg was removed.  [E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.srcs/sources_1/new/clock_divider.v:15]
 WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK_EDGE/falling_edge_reg) is unused and will be removed from module reaction_timer_top.
-WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_START_BTN/DEBOUNCE_CLOCK_EDGE/falling_edge_reg) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_READY_BTN/DEBOUNCE_CLOCK_EDGE/falling_edge_reg) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK_EDGE/rising_edge_reg) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK_EDGE/falling_edge_reg) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[0]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[1]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[2]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[3]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[4]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[5]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[6]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[7]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[8]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[9]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[10]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[11]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[12]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[13]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[14]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[15]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[16]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[17]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[18]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[19]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[20]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[21]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[22]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[23]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[24]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[25]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[26]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[27]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[28]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[29]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[30]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[31]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[32]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[33]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/counter_reg[34]) is unused and will be removed from module reaction_timer_top.
+WARNING: [Synth 8-3332] Sequential element (DEBOUNCE_RESTRT_BTN/DEBOUNCE_CLOCK/divided_clk_reg) is unused and will be removed from module reaction_timer_top.
+INFO: [Synth 8-3886] merging instance 'DISPLAY/digit3_reg[4]' (LDP) to 'DISPLAY/digit2_reg[4]'
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 776.598 ; gain = 485.559
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 779.824 ; gain = 489.539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 ROM:
-+----------------------+-------------------------------------------------+---------------+----------------+
-|Module Name           | RTL Object                                      | Depth x Width | Implemented As | 
-+----------------------+-------------------------------------------------+---------------+----------------+
-|seven_segment_decoder | ssd                                             | 32x8          | LUT            | 
-|reaction_timer_top    | DISPLAY_RESPONSE_TIME/MULTI_SSD/SSD_DECODER/ssd | 32x8          | LUT            | 
-+----------------------+-------------------------------------------------+---------------+----------------+
++----------------------+-----------------------------------+---------------+----------------+
+|Module Name           | RTL Object                        | Depth x Width | Implemented As | 
++----------------------+-----------------------------------+---------------+----------------+
+|seven_segment_decoder | ssd                               | 32x8          | LUT            | 
+|reaction_timer_top    | DISPLAY/MULTI_SSD/SSD_DECODER/ssd | 32x8          | LUT            | 
++----------------------+-----------------------------------+---------------+----------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
@@ -321,13 +384,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 776.598 ; gain = 485.559
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 779.824 ; gain = 489.539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 795.320 ; gain = 504.281
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 793.750 ; gain = 503.465
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -339,7 +402,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -363,7 +426,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished IO Insertion : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -376,7 +439,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -388,25 +451,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -423,67 +486,70 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |    72|
-|3     |LUT1   |    13|
-|4     |LUT2   |    76|
-|5     |LUT3   |    29|
-|6     |LUT4   |    67|
-|7     |LUT5   |    45|
-|8     |LUT6   |    61|
-|9     |FDRE   |   243|
-|10    |FDSE   |     7|
-|11    |LD     |     5|
-|12    |LDC    |     7|
-|13    |LDP    |    11|
-|14    |IBUF   |     5|
-|15    |OBUF   |    13|
+|2     |CARRY4 |    74|
+|3     |LUT1   |    18|
+|4     |LUT2   |    68|
+|5     |LUT3   |    35|
+|6     |LUT4   |    81|
+|7     |LUT5   |    62|
+|8     |LUT6   |    84|
+|9     |MUXF7  |     1|
+|10    |FDRE   |   255|
+|11    |FDSE   |    18|
+|12    |LD     |    11|
+|13    |LDC    |     7|
+|14    |LDP    |    10|
+|15    |IBUF   |     6|
+|16    |OBUF   |    17|
 +------+-------+------+
 
 Report Instance Areas: 
-+------+-------------------------+-------------------------------+------+
-|      |Instance                 |Module                         |Cells |
-+------+-------------------------+-------------------------------+------+
-|1     |top                      |                               |   655|
-|2     |  CLOCK_1HZ_GENERATOR    |clock_divider__parameterized1  |    57|
-|3     |  CLOCK_1kHZ_GENERATOR   |clock_divider__parameterized0  |    56|
-|4     |  DEBOUNCE_RESPONSE_BTN  |debouncer                      |    75|
-|5     |    DEBOUNCE_CLOCK       |clock_divider_2                |    58|
-|6     |    DEBOUNCE_CLOCK_EDGE  |edge_detector_3                |     2|
-|7     |  DEBOUNCE_START_BTN     |debouncer_0                    |    71|
-|8     |    DEBOUNCE_CLOCK       |clock_divider                  |    58|
-|9     |    DEBOUNCE_CLOCK_EDGE  |edge_detector                  |     2|
-|10    |  DISPLAY_RESPONSE_TIME  |display                        |   243|
-|11    |    MULTI_SSD            |multiple_seven_segment_display |    21|
-|12    |      SSD_DECODER        |seven_segment_decoder          |     5|
-|13    |  PREPARATION_COUNT_DOWN |counter_rev                    |     9|
-|14    |  RAND_NUM_GEN           |lfsr                           |    15|
-|15    |  REACTION_COUNTER       |counter                        |    27|
-|16    |  TRIGGER_COUNTER        |counter_1                      |    32|
-+------+-------------------------+-------------------------------+------+
++------+------------------------+--------------------------------+------+
+|      |Instance                |Module                          |Cells |
++------+------------------------+--------------------------------+------+
+|1     |top                     |                                |   748|
+|2     |  CLOCK_1HZ_GENERATOR   |clock_divider__parameterized1   |    57|
+|3     |  CLOCK_1kHZ_GENERATOR  |clock_divider__parameterized0   |    56|
+|4     |  DEBOUNCE_READY_BTN    |debouncer                       |    70|
+|5     |    DEBOUNCE_CLOCK      |clock_divider_2                 |    58|
+|6     |    DEBOUNCE_CLOCK_EDGE |edge_detector_3                 |     2|
+|7     |  DEBOUNCE_RESPONSE_BTN |debouncer_0                     |    75|
+|8     |    DEBOUNCE_CLOCK      |clock_divider                   |    58|
+|9     |    DEBOUNCE_CLOCK_EDGE |edge_detector                   |     2|
+|10    |  DELAY_COUNTER         |reverse_counter                 |    28|
+|11    |  DISPLAY               |display                         |   248|
+|12    |    MULTI_SSD           |multiple_seven_segment_display  |    29|
+|13    |      SSD_DECODER       |seven_segment_decoder           |    24|
+|14    |  PREPARATION_COUNTER   |reverse_counter__parameterized0 |    16|
+|15    |  RAND_NUM_GEN          |lfsr                            |    15|
+|16    |  REACTION_COUNTER      |counter                         |    62|
+|17    |  TRIGGER_COUNTER       |counter_1                       |    31|
++------+------------------------+--------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 799.352 ; gain = 509.066
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 21 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:36 . Memory (MB): peak = 799.996 ; gain = 166.773
-Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 799.996 ; gain = 508.957
+Synthesis finished with 0 errors, 0 critical warnings and 67 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:40 . Memory (MB): peak = 799.352 ; gain = 171.727
+Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 799.352 ; gain = 509.066
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 100 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 109 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 1 inverter(s) to 15 load pin(s).
+INFO: [Opt 31-138] Pushed 2 inverter(s) to 20 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 23 instances were transformed.
+  A total of 28 instances were transformed.
   LD => LDCE: 5 instances
+  LD => LDCE (inverted pins: G): 6 instances
   LDC => LDCE: 1 instances
   LDC => LDCE (inverted pins: G): 6 instances
   LDP => LDPE: 2 instances
-  LDP => LDPE (inverted pins: G): 9 instances
+  LDP => LDPE (inverted pins: G): 8 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-57 Infos, 25 Warnings, 0 Critical Warnings and 0 Errors encountered.
+63 Infos, 70 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 799.996 ; gain = 521.719
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:54 . Memory (MB): peak = 799.352 ; gain = 521.617
 INFO: [Common 17-1381] The checkpoint 'E:/MEngg Materials/Sem 1/Digital Systems and Microprocessors ENGN 6213/Assignment_Reaction_Timer/ReactionTimer/ReactionTimer.runs/synth_1/reaction_timer_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file reaction_timer_top_utilization_synth.rpt -pb reaction_timer_top_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 799.996 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sun Apr  8 11:09:26 2018...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 799.352 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 13 14:46:58 2018...

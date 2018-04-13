@@ -10,6 +10,11 @@ set_property -dict {PACKAGE_PIN W19 IOSTANDARD LVCMOS33} [get_ports restart_btn]
 
 set_property -dict {PACKAGE_PIN L1 IOSTANDARD LVCMOS33} [get_ports trigger_led]
 
+set_property -dict {PACKAGE_PIN V14 IOSTANDARD LVCMOS33} [get_ports debug_delay_timer_count[0]]
+set_property -dict {PACKAGE_PIN V13 IOSTANDARD LVCMOS33} [get_ports debug_delay_timer_count[1]]
+set_property -dict {PACKAGE_PIN V3 IOSTANDARD LVCMOS33} [get_ports debug_delay_timer_count[2]]
+set_property -dict {PACKAGE_PIN W3 IOSTANDARD LVCMOS33} [get_ports debug_delay_timer_count[3]]
+
 set_property -dict {PACKAGE_PIN W4 IOSTANDARD LVCMOS33} [get_ports {ssd_anode[3]}]
 set_property -dict {PACKAGE_PIN V4 IOSTANDARD LVCMOS33} [get_ports {ssd_anode[2]}]
 set_property -dict {PACKAGE_PIN U4 IOSTANDARD LVCMOS33} [get_ports {ssd_anode[1]}]

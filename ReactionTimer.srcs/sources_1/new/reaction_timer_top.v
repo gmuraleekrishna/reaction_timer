@@ -8,7 +8,8 @@ module reaction_timer_top (
     input reset,
     input clk,
     output reg trigger_led,
-    output wire [7:0] ssd_cathode,
+    output reg [3:0] debug_delay_timer_count,
+    output wire  [7:0] ssd_cathode,
     output wire [3:0] ssd_anode
     );
     
@@ -19,8 +20,10 @@ module reaction_timer_top (
     parameter SHOW_TIME = 3'd4;
     parameter FAILED = 3'd5;
 
-    parameter FIVE_SECONDS = 14'd5_000; // for 1KHz clk
+    parameter FIVE_SECONDS = 14'd5_000;
+    parameter SEVEN_SECONDS = 14'd7_000;
     parameter NINE_POINT_999_SECONDS = 14'd9_999;
+    parameter TEN_SECONDS = 14'd10_000;
 
     parameter ON = 1;
     parameter OFF = 0;
@@ -35,6 +38,7 @@ module reaction_timer_top (
     wire [13:0] reaction_timer_count;
     reg [13:0] random_prep_time;
     reg [13:0] random_trigger_time;
+    reg [13:0] best_reaction_time;
     reg run_prep_timer;
     wire [13:0] preparation_count;
     wire [13:0] random_number;
@@ -48,9 +52,10 @@ module reaction_timer_top (
     wire [13:0] trigger_timer_count;
     reg run_trigger_timer;
     reg [1:0] display_data_type;
-
-    reg best_reaction_time;
+    reg run_delay_timer;
+    wire [13:0] delay_timer_count;
     reg clear_display;
+
 
     debouncer DEBOUNCE_RESPONSE_BTN (
         .clk(clk),
@@ -104,7 +109,20 @@ module reaction_timer_top (
         .clk(clk_1kHz)
         );
 
-    reverse_counter PREPARATION_COUNTER (
+    reverse_counter #(
+        .INITIAL_VALUE(10)
+    )  DELAY_COUNTER (
+        .run(run_delay_timer),
+        .count(delay_timer_count),
+        .reset(reset_counters),
+        .enable(enable_counters),
+        .clk(clk_1Hz)
+        );
+
+
+    reverse_counter #(
+        .INITIAL_VALUE(3)
+    ) PREPARATION_COUNTER (
         .clk(clk_1Hz),
         .enable(enable_counters),
         .run(run_prep_timer),
@@ -128,7 +146,10 @@ module reaction_timer_top (
         );
 
     always @(posedge clk) begin
-        if (reset | db_restart_btn) begin
+        if(reset) begin
+            best_reaction_time <= NINE_POINT_999_SECONDS;
+        end
+        if (reset | restart_btn) begin
             next_state <= IDLE;
         end else if (enable) begin
             case (next_state)
@@ -136,6 +157,7 @@ module reaction_timer_top (
                     clear_display <= ON;
                     run_prep_timer <= OFF;
                     run_reaction_timer <= OFF;
+                    run_delay_timer <= OFF;
                     trigger_led <= OFF;
                     run_trigger_timer <= OFF;
                     reset_counters <= ON;
@@ -184,15 +206,29 @@ module reaction_timer_top (
                 end
                 SHOW_TIME: begin
                     clear_display <= OFF;
-                    display_data_type <= FLOAT;
-                    display_value <= reaction_timer_count;
-                    next_state <= IDLE;
+                    run_delay_timer <= ON;
+                    debug_delay_timer_count <= delay_timer_count;
+                    if (reaction_timer_count <= best_reaction_time) begin
+                        best_reaction_time <= reaction_timer_count;
+                    end
+                    if (delay_timer_count > 7) begin
+                        display_data_type <= FLOAT;
+                        display_value <= reaction_timer_count; 
+                    end else if (delay_timer_count > 5 && delay_timer_count <= 7) begin
+                        display_data_type <= STRING;
+                        display_value <= 14'd2; // show BESt in display
+                    end else if (delay_timer_count <= 5 && delay_timer_count >= 1) begin
+                        display_data_type <= FLOAT;
+                        display_value <= best_reaction_time;
+                    end else begin
+                        run_delay_timer <= OFF;
+                        next_state <= IDLE;
+                    end       
                 end 
                 FAILED: begin
                     clear_display <= OFF;
                     display_value <= 14'd1; // FAIL
                     display_data_type <= STRING;
-                    next_state <= IDLE;
                 end
                 default:
                     next_state <= IDLE;

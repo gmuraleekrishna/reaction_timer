@@ -8,7 +8,7 @@ module seven_segment_decoder(
     input wire decimal,
     input clear,
     output reg [3:0] ssd_anode,
-    output reg [7:0] ssd,
+    output reg [7:0] ssd
     );
 
     parameter ON = 1;

@@ -1,0 +1,91 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date         : Fri Apr 13 14:47:52 2018
+| Host         : Harish running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file reaction_timer_top_control_sets_placed.rpt
+| Design       : reaction_timer_top
+| Device       : xc7a35t
+-----------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    24 |
+| Unused register locations in slices containing registers |    91 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              31 |           18 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             171 |           47 |
+| Yes          | No                    | No                     |              49 |           14 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              50 |           16 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++----------------------------------------------------------+------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|                       Clock Signal                       |                  Enable Signal                 |                     Set/Reset Signal                    | Slice Load Count | Bel Load Count |
++----------------------------------------------------------+------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|  DISPLAY/float_reg_i_1_n_0                               |                                                | DISPLAY/float_reg_i_2_n_0                               |                1 |              1 |
+|  clk_IBUF_BUFG                                           | REACTION_COUNTER/trigger_led2_out              |                                                         |                1 |              1 |
+|  DEBOUNCE_READY_BTN/DEBOUNCE_CLOCK/shift_reg_reg[1]_0    |                                                | DEBOUNCE_READY_BTN/DEBOUNCE_CLOCK/shift_reg_reg[1]      |                1 |              1 |
+|  DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/shift_reg_reg[1]_0 |                                                | DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/shift_reg_reg[1]   |                1 |              1 |
+|  CLOCK_1kHZ_GENERATOR/CLK_BUFG                           |                                                |                                                         |                1 |              2 |
+|  clk_IBUF_BUFG                                           | debug_delay_timer_count[3]_i_1_n_0             |                                                         |                2 |              4 |
+|  CLOCK_1HZ_GENERATOR/CLK                                 | DELAY_COUNTER/count[3]_i_1_n_0                 | reset_counters_reg_n_0                                  |                1 |              4 |
+|  CLOCK_1HZ_GENERATOR/CLK                                 | PREPARATION_COUNTER/count[3]_i_1__0_n_0        | reset_counters_reg_n_0                                  |                2 |              4 |
+|  DISPLAY/digit4_reg[4]_i_2_n_0                           |                                                |                                                         |                3 |              5 |
+| ~clear_display_reg_n_0                                   |                                                |                                                         |                2 |              6 |
+|  clk_IBUF_BUFG                                           | DEBOUNCE_READY_BTN/DEBOUNCE_CLOCK_EDGE/E[0]    |                                                         |                2 |              7 |
+|  clk_IBUF_BUFG                                           | DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK_EDGE/E[0] |                                                         |                1 |              7 |
+|  clk_IBUF_BUFG                                           |                                                | reset_IBUF                                              |                3 |             14 |
+|  clk_IBUF_BUFG                                           | PREPARATION_COUNTER/E[0]                       |                                                         |                3 |             14 |
+|  clk_IBUF_BUFG                                           | best_reaction_time[12]_i_1_n_0                 | reset_IBUF                                              |                5 |             14 |
+| ~display_data_type_reg_n_0_[0]                           |                                                | DISPLAY/digit1_reg[4]_i_3_n_0                           |                5 |             14 |
+|  CLOCK_1kHZ_GENERATOR/CLK_BUFG                           | REACTION_COUNTER/count[0]_i_1_n_0              | reset_counters_reg_n_0                                  |                4 |             14 |
+|  CLOCK_1kHZ_GENERATOR/CLK_BUFG                           | TRIGGER_COUNTER/count[0]_i_1__0_n_0            | reset_counters_reg_n_0                                  |                4 |             14 |
+|  clk_IBUF_BUFG                                           | DELAY_COUNTER/display_data_type_reg[1]         |                                                         |                5 |             16 |
+|  clk_IBUF_BUFG                                           |                                                |                                                         |               12 |             18 |
+|  clk_IBUF_BUFG                                           |                                                | CLOCK_1kHZ_GENERATOR/clear                              |                9 |             35 |
+|  clk_IBUF_BUFG                                           |                                                | CLOCK_1HZ_GENERATOR/counter[0]_i_1__2_n_0               |                9 |             35 |
+|  clk_IBUF_BUFG                                           |                                                | DEBOUNCE_READY_BTN/DEBOUNCE_CLOCK/counter[0]_i_1__0_n_0 |                9 |             35 |
+|  clk_IBUF_BUFG                                           |                                                | DEBOUNCE_RESPONSE_BTN/DEBOUNCE_CLOCK/counter[0]_i_1_n_0 |                9 |             35 |
++----------------------------------------------------------+------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 1      |                     4 |
+| 2      |                     1 |
+| 4      |                     3 |
+| 5      |                     1 |
+| 6      |                     1 |
+| 7      |                     2 |
+| 14     |                     6 |
+| 16+    |                     6 |
++--------+-----------------------+
+
+

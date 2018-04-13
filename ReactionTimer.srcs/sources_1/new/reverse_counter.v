@@ -2,17 +2,19 @@
 
 
 
-module reverse_counter (
+module reverse_counter #(
+    parameter integer INITIAL_VALUE = 3
+)(
     input run,
     input reset,
     input enable,
     input clk,
-    output reg [1:0] count
+    output reg [3:0] count
     );
 
     always @(posedge clk) begin
         if (reset) begin
-            count <= 2'd3;
+            count <= INITIAL_VALUE;
         end else if(run && enable) begin
             count <= count - 1;
         end
