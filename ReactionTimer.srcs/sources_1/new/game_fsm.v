@@ -12,14 +12,14 @@ module game_fsm (
     input [13:0] delay_timer_count,
     input [13:0] preparation_timer_count,
     input [13:0] random_number,
-    output clear_display,
-    output run_delay_timer,
-    output run_prep_timer,
-    output run_trigger_timer,
-    output reset_counters,
-    output run_reaction_timer,
-    output trigger_led,
-    output enable_counters,
+    output reg clear_display,
+    output reg run_delay_timer,
+    output reg run_prep_timer,
+    output reg run_trigger_timer,
+    output reg reset_counters,
+    output reg run_reaction_timer,
+    output reg trigger_led,
+    output reg enable_counters,
     output reg [1:0] display_data_type, //
     output reg [13:0] display_value //
     );
@@ -46,7 +46,7 @@ module game_fsm (
     reg [13:0] best_reaction_time;
     reg [2:0] next_state;
     reg [13:0] random_trigger_time;
-
+    
     always @(posedge clk) begin
         if(reset) begin
             best_reaction_time <= NINE_POINT_999_SECONDS;

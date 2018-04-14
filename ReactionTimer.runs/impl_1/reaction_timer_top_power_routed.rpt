@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
-| Date             : Fri Apr 13 14:48:29 2018
+| Date             : Sat Apr 14 15:53:05 2018
 | Host             : Harish running 64-bit major release  (build 9200)
 | Command          : report_power -file reaction_timer_top_power_routed.rpt -pb reaction_timer_top_power_summary_routed.pb -rpx reaction_timer_top_power_routed.rpx
 | Design           : reaction_timer_top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.076        |
+| Total On-Chip Power (W)  | 0.095        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.005        |
+| Dynamic (W)              | 0.023        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.6         |
-| Junction Temperature (C) | 25.4         |
+| Max Ambient (C)          | 84.5         |
+| Junction Temperature (C) | 25.5         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,17 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      756 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      284 |     20800 |            1.37 |
-|   CARRY4       |    <0.001 |       74 |      8150 |            0.91 |
-|   Register     |    <0.001 |      301 |     41600 |            0.72 |
+| Slice Logic    |     0.002 |      836 |       --- |             --- |
+|   LUT as Logic |     0.001 |      306 |     20800 |            1.47 |
+|   CARRY4       |    <0.001 |       83 |      8150 |            1.02 |
+|   Register     |    <0.001 |      343 |     41600 |            0.82 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
-|   Others       |     0.000 |       33 |       --- |             --- |
-| Signals        |    <0.001 |      578 |       --- |             --- |
-| I/O            |     0.002 |       23 |       106 |           21.70 |
+|   Others       |     0.000 |       40 |       --- |             --- |
+| Signals        |     0.002 |      657 |       --- |             --- |
+| I/O            |     0.018 |       19 |       106 |           17.92 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.076 |          |           |                 |
+| Total          |     0.095 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.013 |       0.003 |      0.010 |
-| Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
+| Vccint    |       1.000 |     0.015 |       0.006 |      0.010 |
+| Vccaux    |       1.800 |     0.013 |       0.001 |      0.013 |
+| Vcco33    |       3.300 |     0.006 |       0.005 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -142,7 +141,7 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| reaction_timer_top      |     0.005 |
+| reaction_timer_top      |     0.023 |
 |   CLOCK_1HZ_GENERATOR   |    <0.001 |
 |   CLOCK_1kHZ_GENERATOR  |    <0.001 |
 |   DEBOUNCE_READY_BTN    |    <0.001 |
@@ -151,10 +150,14 @@ Table of Contents
 |   DEBOUNCE_RESPONSE_BTN |    <0.001 |
 |     DEBOUNCE_CLOCK      |    <0.001 |
 |     DEBOUNCE_CLOCK_EDGE |    <0.001 |
+|   DEBOUNCE_RESTRT_BTN   |    <0.001 |
+|     DEBOUNCE_CLOCK      |    <0.001 |
+|     DEBOUNCE_CLOCK_EDGE |    <0.001 |
 |   DELAY_COUNTER         |    <0.001 |
-|   DISPLAY               |    <0.001 |
+|   DISPLAY               |     0.001 |
 |     MULTI_SSD           |    <0.001 |
 |       SSD_DECODER       |    <0.001 |
+|   GAME_FSM              |     0.001 |
 |   PREPARATION_COUNTER   |    <0.001 |
 |   RAND_NUM_GEN          |    <0.001 |
 |   REACTION_COUNTER      |    <0.001 |

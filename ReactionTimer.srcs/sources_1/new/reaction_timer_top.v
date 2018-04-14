@@ -7,21 +7,21 @@ module reaction_timer_top (
     input restart_btn,
     input reset,
     input clk,
-    output reg trigger_led,
+    output wire trigger_led,
     output wire  [7:0] ssd_cathode,
     output wire [3:0] ssd_anode
     );
 
-    reg run_reaction_timer;
-    reg reset_counters;
-    reg enable_counters;
+    wire run_reaction_timer;
+    wire reset_counters;
+    wire enable_counters;
     wire [13:0] reaction_timer_count;
     reg [13:0] random_prep_time;
 
-    reg run_prep_timer;
+    wire run_prep_timer;
     wire [13:0] random_number;
     
-    reg [13:0] display_value;
+    wire [13:0] display_value;
     wire db_response_btn;
     wire db_ready_btn;
     wire db_restart_btn;
@@ -29,11 +29,11 @@ module reaction_timer_top (
     wire clk_1Hz;
     wire [13:0] trigger_timer_count;
     wire [13:0] preparation_timer_count;
-    reg run_trigger_timer;
-    reg [1:0] display_data_type;
-    reg run_delay_timer;
+    wire run_trigger_timer;
+    wire [1:0] display_data_type;
+    wire run_delay_timer;
     wire [13:0] delay_timer_count;
-    reg clear_display;
+    wire clear_display;
 
     debouncer DEBOUNCE_RESPONSE_BTN (
         .clk(clk),
