@@ -7,7 +7,7 @@ module reaction_timer_top (
     input restart_btn,
     input reset,
     input clk,
-    output wire trigger_led,
+    output wire [7:0] trigger_leds,
     output wire  [7:0] ssd_cathode,
     output wire [3:0] ssd_anode
     );
@@ -30,9 +30,11 @@ module reaction_timer_top (
     wire [13:0] trigger_timer_count;
     wire [13:0] preparation_timer_count;
     wire run_trigger_timer;
+    wire run_reset_timer;
     wire [1:0] display_data_type;
     wire run_delay_timer;
     wire [13:0] delay_timer_count;
+    wire [13:0] reset_timer_count;
     wire clear_display;
 
     debouncer DEBOUNCE_RESPONSE_BTN (
@@ -89,6 +91,16 @@ module reaction_timer_top (
 
     reverse_counter #(
         .INITIAL_VALUE(10)
+    ) RESET_COUNTER (
+        .run(run_reset_timer),
+        .count(reset_timer_count),
+        .reset(reset_counters),
+        .enable(enable_counters),
+        .clk(clk_1Hz)
+        );
+
+    reverse_counter #(
+        .INITIAL_VALUE(10)
     )  DELAY_COUNTER (
         .run(run_delay_timer),
         .count(delay_timer_count),
@@ -139,12 +151,14 @@ module reaction_timer_top (
         .run_trigger_timer(run_trigger_timer),
         .run_reaction_timer(run_reaction_timer),
         .reset_counters(reset_counters),
-        .trigger_led(trigger_led),
+        .trigger_leds(trigger_leds),
         .enable_counters(enable_counters),
         .display_data_type(display_data_type),
         .display_value(display_value),
         .preparation_timer_count(preparation_timer_count),
-        .random_number(random_number)
+        .random_number(random_number),
+        .run_reset_timer(run_reset_timer),
+        .reset_timer_count(reset_timer_count)
         );
 
 endmodule

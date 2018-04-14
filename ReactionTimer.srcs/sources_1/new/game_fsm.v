@@ -12,16 +12,18 @@ module game_fsm (
     input [13:0] delay_timer_count,
     input [13:0] preparation_timer_count,
     input [13:0] random_number,
+    input [13:0] reset_timer_count,
     output reg clear_display,
     output reg run_delay_timer,
     output reg run_prep_timer,
     output reg run_trigger_timer,
     output reg reset_counters,
     output reg run_reaction_timer,
-    output reg trigger_led,
     output reg enable_counters,
+    output reg run_reset_timer,
+    output reg [7:0] trigger_leds,
     output reg [1:0] display_data_type, //
-    output reg [13:0] display_value //
+    output reg [13:0] display_value, //
     );
 
     parameter IDLE = 3'd0;
@@ -30,6 +32,7 @@ module game_fsm (
     parameter WAIT_FOR_RESPONSE = 3'd3;
     parameter SHOW_TIME = 3'd4;
     parameter FAILED = 3'd5;
+    parameter PARKING = 3'd6;
 
     parameter FIVE_SECONDS = 14'd5_000;
     parameter SEVEN_SECONDS = 14'd7_000;
@@ -60,7 +63,8 @@ module game_fsm (
                     run_prep_timer <= OFF;
                     run_reaction_timer <= OFF;
                     run_delay_timer <= OFF;
-                    trigger_led <= OFF;
+                    run_reset_timer <= OFF;
+                    trigger_leds <= 8'h0;
                     run_trigger_timer <= OFF;
                     reset_counters <= ON;
                     enable_counters <= OFF;
@@ -72,7 +76,7 @@ module game_fsm (
                     clear_display <= OFF;
                     reset_counters <= OFF;
                     enable_counters <= ON;
-                    trigger_led <= OFF;               
+                    trigger_leds <= 8'h0;               
                     run_prep_timer <= ON;
                     display_data_type <= DIGIT;
                     display_value <= preparation_timer_count;
@@ -90,7 +94,7 @@ module game_fsm (
                         next_state <= FAILED;
                     end else if(trigger_timer_count == random_trigger_time | trigger_timer_count >= FIVE_SECONDS) begin
                         run_trigger_timer <= OFF;
-                        trigger_led <= ON;
+                        trigger_leds <= 8'hFF;
                         next_state <= WAIT_FOR_RESPONSE;
                     end
                 end
@@ -99,10 +103,10 @@ module game_fsm (
                     if (response == ON) begin
                         run_reaction_timer <= OFF;
                         next_state <= SHOW_TIME;
-                        trigger_led <= OFF;
+                        trigger_leds <= 8'h0;
                     end else if (reaction_timer_count >= NINE_POINT_999_SECONDS) begin
                         run_reaction_timer <= OFF;
-                        trigger_led <= OFF;
+                        trigger_leds <= 8'h0;
                         next_state <= FAILED;
                     end
                 end
@@ -123,13 +127,21 @@ module game_fsm (
                         display_value <= best_reaction_time;
                     end else begin
                         run_delay_timer <= OFF;
-                        next_state <= IDLE;
+                        next_state <= PARKING;
                     end       
                 end 
                 FAILED: begin
                     clear_display <= OFF;
                     display_value <= 14'd1; // FAIL
                     display_data_type <= STRING;
+                    next_state <= PARKING;
+                end
+                PARKING: begin
+                    run_reset_timer <= ON;
+                    if(reset_timer_count == 0) begin
+                        run_reset_timer <= OFF;
+                        next_state <= IDLE;
+                    end
                 end
                 default:
                     next_state <= IDLE;
