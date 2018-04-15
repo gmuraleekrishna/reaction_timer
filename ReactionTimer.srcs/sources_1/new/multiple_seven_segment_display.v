@@ -27,6 +27,6 @@ module multiple_seven_segment_display(
       );
       
     always @(posedge clk) begin
-        active_display <= active_display + 1;
+        active_display <= active_display + 1; // select display
     end     
 endmodule

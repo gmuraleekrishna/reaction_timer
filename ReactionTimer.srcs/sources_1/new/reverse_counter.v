@@ -14,7 +14,7 @@ module reverse_counter #(
 
     always @(posedge clk) begin
         if (reset) begin
-            count <= INITIAL_VALUE;
+            count <= INITIAL_VALUE; // set initial value to support different counters
         end else if(run && enable) begin
             count <= count - 1;
         end

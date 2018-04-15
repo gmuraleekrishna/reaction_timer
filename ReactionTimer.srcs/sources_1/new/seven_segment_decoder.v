@@ -19,16 +19,16 @@ module seven_segment_decoder(
 
     always @(*) begin
         case (ssd_number)
-            5'd0 : ssd = 8'b00_00_00_01;
-            5'd1 : ssd = 8'b01_00_11_11;
-            5'd2 : ssd = 8'b00_01_00_10;
-            5'd3 : ssd = 8'b00_00_01_10;
-            5'd4 : ssd = 8'b01_00_11_00;
-            5'd5 : ssd = 8'b00_10_01_00;
-            5'd6 : ssd = 8'b00_10_00_00;
-            5'd7 : ssd = 8'b00_00_11_11;
-            5'd8 : ssd = 8'b00_00_00_00;
-            5'd9 : ssd = 8'b00_00_01_00;
+            5'd0 : ssd = 8'b00_00_00_01; // 0
+            5'd1 : ssd = 8'b01_00_11_11; // 1
+            5'd2 : ssd = 8'b00_01_00_10; // 2
+            5'd3 : ssd = 8'b00_00_01_10; // 3
+            5'd4 : ssd = 8'b01_00_11_00; // 4
+            5'd5 : ssd = 8'b00_10_01_00; // 5
+            5'd6 : ssd = 8'b00_10_00_00; // 6
+            5'd7 : ssd = 8'b00_00_11_11; // 7
+            5'd8 : ssd = 8'b00_00_00_00; // 8
+            5'd9 : ssd = 8'b00_00_01_00; // 9
             
             5'd10 : ssd = 8'b00_11_10_00; // F
             5'd11 : ssd = 8'b00_00_10_00; // A
@@ -42,7 +42,7 @@ module seven_segment_decoder(
             5'd17 : ssd = 8'b00_10_01_00; //S
             5'd18 : ssd = 8'b01_11_00_00; //t
             
-            5'd19 : ssd = 8'b11_11_11_11;
+            5'd19 : ssd = 8'b11_11_11_11; // Display off
 
             default : ssd = 8'b11_11_11_11;
         endcase
@@ -54,22 +54,22 @@ module seven_segment_decoder(
         end else begin
             case(active_display)
                 2'd0 : begin
-                    ssd_number <= digit4;
+                    ssd_number <= digit4; // last ssd
                     ssd_anode <= 4'b1110;
                     dp <= OFF;
                 end
                 2'd1 : begin
-                    ssd_number <= digit3;
+                    ssd_number <= digit3; //second last ssd
                     ssd_anode <= 4'b1101;
                     dp <= OFF;
                 end
                 2'd2 : begin
-                    ssd_number <= digit2;
+                    ssd_number <= digit2; // 2nd ssd
                     ssd_anode <= 4'b1011;
                     dp <= OFF;
                 end
                 2'd3 : begin
-                    ssd_number <= digit1;
+                    ssd_number <= digit1; // first ssd
                     ssd_anode <= 4'b0111;
                     dp <= decimal;
                 end

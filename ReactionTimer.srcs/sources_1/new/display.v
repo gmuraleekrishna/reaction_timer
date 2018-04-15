@@ -41,7 +41,7 @@ module display (
     parameter TEN_TO_POWER_0 = 14'd1;
 
     always @(*) begin
-        if (type == FLOAT) begin
+        if (type == FLOAT) begin // float numner, extract and show each digits
             digit1 = value / TEN_TO_POWER_3; // digit before decimal point (dp)
             reminder1 = value % TEN_TO_POWER_3; // rest of the number after dp
             digit2 = reminder1 / TEN_TO_POWER_2; // extract first digit after dp
@@ -50,13 +50,13 @@ module display (
             reminder3 = reminder2 % TEN_TO_POWER_1; // rest of the number after second digit after dp
             digit4 = reminder3 / TEN_TO_POWER_0; // extract third digit after dp
             float = 1'b1;
-        end else if (type == DIGIT) begin 
+        end else if (type == DIGIT) begin // type is single digit
             digit4 <= value[4:0];
             digit1 <= 5'd19;
             digit2 <= 5'd19; // switch off other displays.
             digit3 <= 5'd19;
             float <= 1'b0;
-        end else if (type == STRING) begin
+        end else if (type == STRING) begin // type is string
             float <= 1'b0;
             case(value)
                 14'd1: begin

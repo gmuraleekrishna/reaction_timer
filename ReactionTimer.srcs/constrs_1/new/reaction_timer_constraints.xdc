@@ -8,7 +8,14 @@ set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports response_btn
 set_property -dict {PACKAGE_PIN T17 IOSTANDARD LVCMOS33} [get_ports ready_btn]; # BTNR
 set_property -dict {PACKAGE_PIN W19 IOSTANDARD LVCMOS33} [get_ports restart_btn]; # BTNL
 
-set_property -dict {PACKAGE_PIN L1 IOSTANDARD LVCMOS33} [get_ports trigger_led]
+set_property -dict {PACKAGE_PIN L1 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[0]}]
+set_property -dict {PACKAGE_PIN P1 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[1]}]
+set_property -dict {PACKAGE_PIN N3 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[2]}]
+set_property -dict {PACKAGE_PIN P3 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[3]}]
+set_property -dict {PACKAGE_PIN U3 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[4]}]
+set_property -dict {PACKAGE_PIN W3 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[5]}]
+set_property -dict {PACKAGE_PIN V3 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[6]}]
+set_property -dict {PACKAGE_PIN V13 IOSTANDARD LVCMOS33} [get_ports {trigger_leds[7]}]
 
 set_property -dict {PACKAGE_PIN W4 IOSTANDARD LVCMOS33} [get_ports {ssd_anode[3]}]
 set_property -dict {PACKAGE_PIN V4 IOSTANDARD LVCMOS33} [get_ports {ssd_anode[2]}]
